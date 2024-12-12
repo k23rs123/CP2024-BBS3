@@ -331,3 +331,46 @@ textarea.form-control {
 .deleting {
     animation: fadeOut 0.3s ease-in-out forwards;
 }
+
+#changeBackgroundColorButton:hover {
+    background-color: #45a049;
+}
+
+body.rainbow-background {
+    background: linear-gradient(90deg, 
+        #ff0000, #ff7f00, #ffff00, 
+        #00ff00, #0000ff, #4b0082, #8b00ff);
+    background-size: 300% 100%;
+    animation: rainbow 5s ease infinite;
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#changeBackgroundColorButton {
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#changeBackgroundColorButton:hover {
+    background-color: #45a049;
+}
+
+.character-count.error {
+    color: red;
+}

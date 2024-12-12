@@ -317,6 +317,7 @@ $(function() {
     loadPosts();
 });
 
+
 // クリーンアップ処理
 window.addEventListener('unload', function() {
     if (postsListener) {
@@ -328,45 +329,73 @@ window.addEventListener('unload', function() {
 </head>
 <body>
     <div class="container">
-        <h1>掲示板アプリ</h1>
-        
-        <!-- メッセージ表示エリア -->
-        <div id="messageArea"></div>
+    <h1>掲示板アプリ</h1>
 
-        <!-- 投稿フォーム -->
-        <div class="post-form">
-            <div class="form-group">
-                <label for="authorInput">お名前</label>
-                <input type="text" id="authorInput" 
-                       class="form-control" placeholder="お名前">
-                <small class="character-count" id="authorCount">0/20</small>
-            </div>
-            <div class="form-group">
-                <label for="contentInput">投稿内容</label>
-                <textarea id="contentInput" class="form-control" 
-                          placeholder="投稿内容を入力してください"></textarea>
-                <small class="character-count" id="contentCount">0/1000</small>
-            </div>
-            <div class="button-group">
-                <button id="postButton" class="btn-primary">投稿する</button>
-            </div>
+    <button id="changeBackgroundColorButton" class="btn-primary">虹色の背景に変更</button>
+    <script>
+
+function changeToRainbowBackground() {
+    document.body.classList.add('rainbow-background');
+}
+
+$(document).ready(function() {
+    $('#changeBackgroundColorButton').on('click', changeToRainbowBackground);
+});
+
+function updateCharacterCount(inputId, counterId, maxLength) {
+    const input = $(`#${inputId}`);
+    const counter = $(`#${counterId}`);
+    
+    input.on('input', () => {
+        const length = input.val().length;
+        const remaining = maxLength - length;          counter.text(`${remaining}残り`);  
+    
+        if (remaining < 0) {
+            counter.addClass('error');
+        } else {
+            counter.removeClass('error');
+        }
+    });
+}
+</script>
+
+    <!-- メッセージ表示エリア -->
+    <div id="messageArea"></div>
+
+    <!-- 投稿フォーム -->
+    <div class="post-form">
+        <div class="form-group">
+            <label for="authorInput">お名前</label>
+            <input type="text" id="authorInput" 
+                   class="form-control" placeholder="お名前">
+            <small class="character-count" id="authorCount">20残り</small>
         </div>
-
-        <!-- 投稿一覧 -->
-        <div class="posts-container">
-            <h2>投稿一覧</h2>
-            <div class="posts-control">
-                <select id="sortOrder" class="form-control">
-                    <option value="newest">新しい順</option>
-                    <option value="oldest">古い順</option>
-                </select>
-            </div>
-            <div id="postsList"></div>
-            <div id="loadingSpinner" class="loading-spinner" style="display: none;">
-                <div class="spinner"></div>
-                <p>読み込み中...</p>
-            </div>
+        <div class="form-group">
+            <label for="contentInput">投稿内容</label>
+            <textarea id="contentInput" class="form-control" 
+                      placeholder="投稿内容を入力してください"></textarea>
+            <small class="character-count" id="contentCount">1000残り</small>
+        </div>
+        <div class="button-group">
+            <button id="postButton" class="btn-primary">投稿する</button>
         </div>
     </div>
+
+    <!-- 投稿一覧 -->
+    <div class="posts-container">
+        <h2>投稿一覧</h2>
+        <div class="posts-control">
+            <select id="sortOrder" class="form-control">
+                <option value="newest">新しい順</option>
+                <option value="oldest">古い順</option>
+            </select>
+        </div>
+        <div id="postsList"></div>
+        <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+            <div class="spinner"></div>
+            <p>読み込み中...</p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
