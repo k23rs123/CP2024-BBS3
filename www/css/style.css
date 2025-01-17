@@ -374,3 +374,67 @@ body.rainbow-background {
 .character-count.error {
     color: red;
 }
+
+/* CSSファイルまたは <style> タグ内に追加 */
+.gold-background {
+    background: linear-gradient(45deg, #ffd700, #ffec8b);
+    background-size: 200% 200%;
+    animation: gradient-animation 5s infinite alternate;
+}
+
+.silver-background {
+    background: linear-gradient(45deg, #c0c0c0, #ffffff);
+    background-size: 200% 200%;
+    animation: gradient-animation 5s infinite alternate;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* 虹色の背景ボタン */
+#changeBackgroundColorButton {
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#changeBackgroundColorButton:hover {
+    opacity: 0.8;
+}
+
+/* 金色背景ボタン */
+#goldBackgroundButton {
+    background: #ffd700; /* ゴールド */
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#goldBackgroundButton:hover {
+    background: #ffec8b;
+}
+
+/* 銀色背景ボタン */
+#silverBackgroundButton {
+    background: #c0c0c0; /* シルバー */
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#silverBackgroundButton:hover {
+    background: #e0e0e0;
+}
+

@@ -331,7 +331,13 @@ window.addEventListener('unload', function() {
     <div class="container">
     <h1>掲示板アプリ</h1>
 
+    <!-- 背景変更ボタン -->
+<div class="background-buttons">
     <button id="changeBackgroundColorButton" class="btn-primary">虹色の背景に変更</button>
+    <button id="goldBackgroundButton" class="btn-primary">背景を金に変更</button>
+    <button id="silverBackgroundButton" class="btn-primary">背景を銀に変更</button>
+</div>
+
     <script>
 
 function changeToRainbowBackground() {
@@ -357,6 +363,23 @@ function updateCharacterCount(inputId, counterId, maxLength) {
         }
     });
 }
+
+function changeToGoldBackground() {
+    document.body.classList.remove('silver-background', 'rainbow-background');
+    document.body.classList.add('gold-background');
+}
+
+function changeToSilverBackground() {
+    document.body.classList.remove('gold-background', 'rainbow-background');
+    document.body.classList.add('silver-background');
+}
+
+// ボタンのクリックイベントを設定
+$(document).ready(function() {
+    $('#goldBackgroundButton').on('click', changeToGoldBackground);
+    $('#silverBackgroundButton').on('click', changeToSilverBackground);
+});
+
 </script>
 
     <!-- メッセージ表示エリア -->
